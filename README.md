@@ -29,9 +29,14 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 * [Deep Voxel Flow (DVF)](https://github.com/liuziwei7/voxel-flow)
 
 ## Usage
-* Run your own images:
+* Run your own images (using the model trained on our synthetic training data):
 ``` bash
 CUDA_VISIBLEDEVICES=0 python3 test_real.py --ckpt_path_deq ckpt_deq/model.ckpt --ckpt_path_lin ckpt_lin/model.ckpt --ckpt_path_hal ckpt_hal/model.ckpt --test_imgs ./imgs --output_path output_hdrs
+```
+
+* Run your own images (using the model fine-tuned on both synthetic and real training data):
+``` bash
+CUDA_VISIBLEDEVICES=0 python3 test_real_refinement.py --ckpt_path refinement_log_from_wo_raw/model.ckpt --test_imgs ./imgs --output_path output_hdrs
 ```
 
 ## Citation

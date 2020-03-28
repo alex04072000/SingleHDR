@@ -41,12 +41,12 @@ CUDA_VISIBLEDEVICES=0 python3 test_real_refinement.py --ckpt_path refinement_log
 
 ## Citation
 ```
-[1]  @inproceedings{liu2019cyclicgen,
-         author = {},
-         title = {},
-         booktitle = {},
-         year = {}
-     }
+[1]  @inproceedings{Liu-CVPR-2020,
+         author    = {Liu, Yu-Lun and Lai, Wei-Sheng and Chen, Yu-Sheng and Kao, Yi-Lung and Yang, Ming-Hsuan and Chuang, Yung-Yu and Huang, Jia-Bin}, 
+         title     = {Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline}, 
+         booktitle = {Conference on Computer Vision and Pattern Recognition},
+         year      = {2020}
+}
 ```
 ```
 [2]  @inproceedings{liu2017voxelflow,

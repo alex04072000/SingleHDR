@@ -14,7 +14,7 @@ This is the author's reference implementation of the single-image HDR reconstruc
 in CVPR 2020.
 Should you be making use of our work, please cite our paper [1]. Some codes are forked from [HDRCNN](https://github.com/gabrieleilertsen/hdrcnn) [2].
 
-<img src='./teaser.png' width=500>
+<img src='./Proposed.png' width=500>
 
 Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw/~yulunliu/).
 

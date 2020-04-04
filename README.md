@@ -8,7 +8,7 @@ Recovering a high dynamic range (HDR) image from asingle low dynamic range (LDR)
 
 Paper
 
-<a href="https://www.cmlab.csie.ntu.edu.tw/~yulunliu/SingleHDR_/SingleHDR.pdf" rel="Paper"><img src="thumb.jpg" alt="Paper" width="100%"></a>
+<a href="https://arxiv.org/abs/2004.01179" rel="Paper"><img src="thumb.jpg" alt="Paper" width="100%"></a>
 
 ## Overview
 This is the author's reference implementation of the single-image HDR reconstruction using TensorFlow described in:

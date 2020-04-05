@@ -24,6 +24,8 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 ## Requirements setup
 * [TensorFlow](https://www.tensorflow.org/)
 
+    * tested using TensorFlow 1.10.0
+
 * To download the pre-trained models:
 
     * [ckpt](https://drive.google.com/open?id=1e9vP8YPEjGcvXCa0Bfqwxw7qks7dH-VE)

@@ -15,7 +15,7 @@ This is the author's reference implementation of the single-image HDR reconstruc
 "Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline"
 [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw/~yulunliu/), [Wei-Sheng Lai](https://www.wslai.net/), [Yu-Sheng Chen](https://www.cmlab.csie.ntu.edu.tw/~nothinglo/), Yi-Lung Kao, [Ming-Hsuan Yang](https://faculty.ucmerced.edu/mhyang/), [Yung-Yu Chuang](https://www.csie.ntu.edu.tw/~cyy/), [Jia-Bin Huang](https://filebox.ece.vt.edu/~jbhuang/) (National Taiwan University & Google & Virginia Tech & University of California at Merced & MediaTek Inc.)
 in CVPR 2020.
-If you find this code useful for your research, please consider citing the following paper. Some codes are forked from [HDRCNN](https://github.com/gabrieleilertsen/hdrcnn) [2].
+If you find this code useful for your research, please consider citing the following paper.
 
 <img src='./Proposed.png' width=1000>
 
@@ -50,3 +50,6 @@ CUDA_VISIBLEDEVICES=0 python3 test_real_refinement.py --ckpt_path refinement_log
 ```
 [2] Gabriel Eilertsen, Joel Kronander, Gyorgy Denes, Rafa\l Mantiuk, and Jonas Unger. HDR image reconstruction from a single exposure using deep CNNs. ACM Transactions on Graphics (TOG), 2017
 ```
+
+## Acknowledgment
+Parts of the code in ```hallucination_net.py``` are folked from [HDRCNN](https://github.com/gabrieleilertsen/hdrcnn). 

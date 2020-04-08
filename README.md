@@ -45,18 +45,8 @@ CUDA_VISIBLEDEVICES=0 python3 test_real_refinement.py --ckpt_path refinement_log
 
 ## Citation
 ```
-[1]  @inproceedings{Liu-Single-CVPR-2020,
-         author    = {Liu, Yu-Lun and Lai, Wei-Sheng and Chen, Yu-Sheng and Kao, Yi-Lung and Yang, Ming-Hsuan and Chuang, Yung-Yu and Huang, Jia-Bin}, 
-         title     = {Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline}, 
-         booktitle = {Conference on Computer Vision and Pattern Recognition},
-         year      = {2020}
-}
+[1] Yu-Lun Liu, Wei-Sheng Lai, Yu-Sheng Chen, Yi-Lung Kao, Ming-Hsuan Yang, Yung-Yu Chuang, and Jia-Bin Huang. Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline. Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2020
 ```
 ```
-[2]  @inproceedings{liu2017voxelflow,
-         author = {Gabriel Eilertsen, Joel Kronander, Gyorgy Denes, Rafa\l Mantiuk, and Jonas Unger},
-         title = {HDR image reconstruction from a single exposure using deep CNNs},
-         journal = "ACM Transactions on Graphics (TOG)",
-         year = {2017} 
-     }
+[2] Gabriel Eilertsen, Joel Kronander, Gyorgy Denes, Rafa\l Mantiuk, and Jonas Unger. HDR image reconstruction from a single exposure using deep CNNs. ACM Transactions on Graphics (TOG), 2017
 ```

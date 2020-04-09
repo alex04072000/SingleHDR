@@ -28,7 +28,7 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 
 * To download the pre-trained models:
 
-    * [ckpt](https://drive.google.com/open?id=1e9vP8YPEjGcvXCa0Bfqwxw7qks7dH-VE)
+    * [ckpt](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/SingleHDR_/ckpt.zip)
 
 ## Data Preparation
 

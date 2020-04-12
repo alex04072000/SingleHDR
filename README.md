@@ -30,8 +30,6 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 
     * [ckpt](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/SingleHDR_/ckpt.zip)
 
-## Data Preparation
-
 ## Usage
 * Run your own images (using the model trained on our synthetic training data):
 ``` bash

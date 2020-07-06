@@ -38,7 +38,7 @@ CUDA_VISIBLEDEVICES=0 python3 test_real.py --ckpt_path_deq ckpt_deq/model.ckpt -
 
 * Run your own images (using the model fine-tuned on both synthetic and real training data):
 ``` bash
-CUDA_VISIBLEDEVICES=0 python3 test_real_refinement.py --ckpt_path refinement_log_from_wo_raw/model.ckpt --test_imgs ./imgs --output_path output_hdrs
+CUDA_VISIBLEDEVICES=0 python3 test_real_refinement.py --ckpt_path ckpt_deq_lin_hal_ref/model.ckpt --test_imgs ./imgs --output_path output_hdrs
 ```
 
 ## Citation

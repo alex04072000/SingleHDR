@@ -1,3 +1,14 @@
+## Important update (2020/07/10)
+The webpage and the links to the dataset will not be accessible from 7/7 to 7/25. The temporary links to the dataset are below:
+
+[Training data ](https://drive.google.com/file/d/1muy49Pd0c7ZkxyxoxV7vIRvPv6kJdPR2/view?usp=sharing)
+[Testing data (HDR-Synth)](https://drive.google.com/file/d/1m4CVsxAy4sXD1IlhPi1Tfi9pqiuhly3L/view?usp=sharing)
+[Testing data (HDR-Real)](https://drive.google.com/file/d/1aHm55zFrPoRu2KwhSnzqbsUNsapStrlC/view?usp=sharing)
+[Testing data (RAISE)](https://drive.google.com/file/d/1rl3BSQ0Oyx-qCfpVCH4kVxaidrR01EZ7/view?usp=sharing)
+[Testing data (HDR-Eye)](https://drive.google.com/file/d/1l-Ix-7qQQqRjAOU6ow9UK-glooaWJ5_Y/view?usp=sharing)
+
+Sorry for the inconvenience.
+
 # [CVPR 2020] Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline
 
 <img src='./teaser.png' width=1000>

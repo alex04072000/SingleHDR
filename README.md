@@ -11,6 +11,8 @@ The webpage and the links to the dataset will not be accessible from 7/7 to 7/25
 
 [Testing data (HDR-Eye)](https://drive.google.com/file/d/1l-Ix-7qQQqRjAOU6ow9UK-glooaWJ5_Y/view?usp=sharing)
 
+[Pre-trained weights](https://drive.google.com/file/d/1e9vP8YPEjGcvXCa0Bfqwxw7qks7dH-VE/view?usp=sharing)
+
 Sorry for the inconvenience.
 
 # [CVPR 2020] Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline

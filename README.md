@@ -1,5 +1,7 @@
 ## Important update (2020/07/10)
-The webpage and the links to the dataset will not be accessible from 7/7 to 7/25. The temporary links to the dataset are below:
+The webpage and the links to the dataset will not be accessible from 7/7 to 7/25. The temporary links to the peoject website and dataset are below:
+
+[Project website](https://alex04072000.github.io/SingleHDR/)
 
 [Training data ](https://drive.google.com/file/d/1muy49Pd0c7ZkxyxoxV7vIRvPv6kJdPR2/view?usp=sharing)
 

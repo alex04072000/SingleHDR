@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Single-Image HDR Reconstruction by Learning to Reverse the Camera
+Pipeline - Results</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta property="og:title" content="Single-Image HDR Reconstruction by Learning to Reverse the Camera
+Pipeline - Results">
+	<meta property="og:description" content="Single-Image HDR Reconstruction by Learning to Reverse the Camera
+Pipeline - Results">
+	<meta name="description" content="Single-Image HDR Reconstruction by Learning to Reverse the Camera
+Pipeline - Results">
+	<meta name="keywords" content="Single-Image HDR Reconstruction by Learning to Reverse the Camera
+Pipeline - Results">
+	<!-- jQuery -->
+	<script
+		src="https://code.jquery.com/jquery-3.1.0.min.js"
+		integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<br>
+				<h1>Single-Image HDR Reconstruction by</h1>
+				<h1>Learning to Reverse the Camera Pipeline</h1>
+				<br>
+			</div>
+		</div>
+		<br>
+		<div class="col-xs-12 text-center">
+			<a href="http://www.cmlab.csie.ntu.edu.tw/~yulunliu/">Yu-Lun Liu</a><SUP>1,5*</SUP> &nbsp;&nbsp;&nbsp;
+			<a href="https://www.wslai.net/">Wei-Sheng Lai</a><SUP>2*</SUP> &nbsp;&nbsp;&nbsp;
+			<a href="https://www.cmlab.csie.ntu.edu.tw/~nothinglo/">Yu-Sheng Chen</a><SUP>1</SUP> &nbsp;&nbsp;&nbsp;
+			Yi-Lung Kao<SUP>1</SUP> &nbsp;&nbsp;&nbsp;
+			<a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><SUP>2,4</SUP> &nbsp;&nbsp;&nbsp;
+			<a href="https://www.csie.ntu.edu.tw/~cyy/">Yung-Yu Chuang</a><SUP>1</SUP> &nbsp;&nbsp;&nbsp;
+			<a href="https://filebox.ece.vt.edu/~jbhuang/">Jia-Bin Huang</a><SUP>3</SUP> &nbsp;&nbsp;&nbsp;
+			<br>
+			<SUP>1</SUP><a href="https://www.ntu.edu.tw/">National Taiwan University</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<SUP>2</SUP><a href="https://about.google/">Google</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<SUP>3</SUP><a href="https://vt.edu/">Virginia Tech</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<SUP>4</SUP><a href="https://www.ucmerced.edu/">University of California at Merced</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<SUP>5</SUP><a href="https://www.mediatek.tw/">MediaTek Inc.</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+        <div class="row">
+			<div class="col-xs-12 text-left">
+				<a href="index.html">
+					<!--<button type="button" class="btn btn-link">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to Main Page
+					</button>-->
+				</a>
+				<br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-16 text-left">
+				<h3>Results on the HDR-Synth, HDR-Real, RAISE, HDR-Eye dataset, and examples from prior work and DxOMark.</h3>
+				<p>We provide the full comparison with all evaluated methods in the paper.</p>
+				<p>We use the Vibrant tone-mapping mode in Photomatix (https://www.hdrsoft.com/) to generate the tone-mapped HDR images.</p>
+                <p>The "Ground truth HDR" images in the HDR-Real dataset are generated from fusing multiple LDR images with Photomatix. Therefore, there might have a slight misalignment between the ground truth HDR and input LDR image.</p>
+				<!--<p>Below we sample results from our testing datasets. Due to the size limitation for the supplementary material, here we only show tone-mapped <sup>[1]</sup> HDR images. All the results will be made available.</p>
+                <p>For Real Dataset, the "Ground truth HDR" images are generated from fusing bucket LDR images using Photomatix <sup>[1]</sup>. As a result, there may be slight misalignment between the ground truth HDR and input LDR image.</p>-->
+				<p><b><font size="4">Mouse over the images to flip between the results from our method and others.</font></b></p>
+				<!--<p><small>[1]: We use Photomatix (https://www.hdrsoft.com/) Vibrant as our tone mapping algorithm.</small></p>-->
+				<hr>
+				<div class="well well-sm">
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="dataset-select">Dataset:&nbsp;</label>
+							<select class="form-control" id="dataset-select" oninput="ChangeDataset();">
+								<option value="Synthetic 23">HDR-Synth</option>
+								<option value="Real 25">HDR-Real</option>
+                                <option value="RAW 27">RAISE dataset</option>
+                                <option value="HDREye 7">HDR-Eye dataset</option>
+                                <option value="SOTA 10">Examples from prior work and DxOMark</option>
+							</select>
+						</div>
+						&emsp;
+						<div class="form-group">
+							<label for="frame-idx-input">Frame: <span id="frame-idx">01</span> / <span id="frame-total">23</span>&nbsp;</label>
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-info" type="button" onclick="PrevFrame();"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+								</span>
+								<input type="range" class="form-control" id="frame-idx-input" min="1" max="23" step="1" value="1" oninput="ChangeFrame();">
+								<span class="input-group-btn">
+									<button class="btn btn-info" type="button" onclick="NextFrame();"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+								</span>
+							</div>
+						</div>
+					</form>
+					<!--<hr style="margin: 7px;">
+					<h5><strong>Method:&nbsp;</strong></h5>
+					<ul class="nav nav-pills" id="current-view-ul">
+						<li role="presentation"><a href="javascript: void(0);" onclick="ChangeCurrentView(0);">Input LDR</a></li>
+						<li role="presentation" class="active"><a href="javascript: void(0);" onclick="ChangeCurrentView(1);">Ours</a></li>
+						<li role="presentation"><a href="javascript: void(0);" onclick="ChangeCurrentView(2);">HDRCNN [Eilertsen et al. 2017]</a></li>
+                        <li role="presentation"><a href="javascript: void(0);" onclick="ChangeCurrentView(3);">DrTMO [Endo et al. 2017]</a></li>
+						<li role="presentation"><a href="javascript: void(0);" onclick="ChangeCurrentView(4);">ExpandNet [Marnerides et al. 2018]</a></li>
+						<li role="presentation"><a href="javascript: void(0);" onclick="ChangeCurrentView(5);">Ground truth HDR</a></li>
+					</ul>-->
+				</div>
+			</div>
+			<div class="row">
+			    <div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/in.jpg" id="showoff-img1" class="img-responsive" onmouseover="onHover1();" onmouseout="offHover1();">
+				  <p id="input_text">Input LDR</p>
+				</div>
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/ours.jpg" id="showoff-img5" class="img-responsive">
+				  <p id="ours_text">Ours*</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/aeo.jpg" id="showoff-img7" class="img-responsive" onmouseover="onHover7();" onmouseout="offHover7();">
+				  <p id="aeo_text">[Aky<span>&#252;</span>z et al. 2007]</p>
+				</div>
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/hpeo.jpg" id="showoff-img8" class="img-responsive" onmouseover="onHover8();" onmouseout="offHover8();">
+				  <p id="hpeo_text">[Huo et al. 2014]</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/koeo.jpg" id="showoff-img9" class="img-responsive" onmouseover="onHover9();" onmouseout="offHover9();">
+				  <p id="koeo_text">[Kovaleski and Oliveira 2014]</p>
+				</div>
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/meo.jpg" id="showoff-img10" class="img-responsive" onmouseover="onHover10();" onmouseout="offHover10();">
+				  <p id="meo_text">[Masia et al. 2017]</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/hdrcnn.jpg" id="showoff-img2" class="img-responsive" onmouseover="onHover2();" onmouseout="offHover2();">
+				  <p id="hdrcnn_text">HDRCNN* [Eilertsen et al. 2017]</p>
+				</div>
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/drtmo.jpg" id="showoff-img3" class="img-responsive" onmouseover="onHover3();" onmouseout="offHover3();">
+				  <p id="drtmo_text">DrTMO* [Endo et al. 2017]</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/expand.jpg" id="showoff-img4" class="img-responsive" onmouseover="onHover4();" onmouseout="offHover4();">
+				  <p id="expand_text">ExpandNet [Marnerides et al. 2018]</p>
+				</div>
+				<div class="col-sm-6 text-center">
+				  <img src="VisualResults_CVPR2020/Synthetic/03068/gt.jpg" id="showoff-img6" class="img-responsive" onmouseover="onHover6();" onmouseout="offHover6();">
+				  <p id="gt_text">Ground truth HDR</p>
+				</div>
+			  </div>
+		</div>
+	</div>
+
+	<style type="text/css">
+.container {
+	background-color: #FBFBFC;
+}
+.teaser-img {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.img-responsive {
+	margin: auto;
+}
+.comparison-table {
+	table-layout: fixed;
+		word-wrap: break-word;
+}
+.comparison-table th {
+	text-align: center;
+}
+	</style>
+
+	<script type="text/javascript">
+	var currentViewList = ["ref/ldr", "ours/tmo", "hdrcnn/tmo", "drtmo/tmo", "expandnet/tmo", "ref/tmo"];
+	var currentView = "ours/tmo";
+	
+	var IList = [[3068,
+3043,
+3070,
+2521,
+3114,
+3031,
+1403,
+1825,
+1808,
+2570,
+3072,
+3519,
+3813,
+1339,
+2595,
+4216,
+4791,
+1862,
+2839,
+3921,
+3940,
+4703,
+2619], [1705,
+725,
+610,
+218,
+1387,
+1161,
+1613,
+1558,
+1073,
+1665,
+578,
+140,
+1474,
+513,
+425,
+1155,
+1214,
+806,
+865,
+601,
+241,
+39,
+369,
+1263,
+1653], [15557,
+7741,
+2651,
+4297,
+10163,
+11174,
+10330,
+5424,
+11762,
+160,
+10526,
+11848,
+2544,
+13969,
+7837,
+6219,
+11399,
+12776,
+2698,
+3654,
+15488,
+8902,
+10371,
+3863,
+14134,
+11242,
+7665], [17,
+16,
+35,
+6,
+4,
+13,
+39], [
+0,
+6,
+11,
+21,
+38,
+50,
+51,
+56,
+59,
+75]];
+
+	function ChangeDataset(){
+		var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_total = parseInt(document.getElementById("dataset-select").value.split(" ")[1]);
+        console.log(frame_total)
+		document.getElementById("frame-total").innerHTML = frame_total;
+		document.getElementById("frame-idx-input").value = 1;
+		document.getElementById("frame-idx-input").max = frame_total;
+		ChangeFrame();
+	}
+
+	function ChangeFrame(){
+		var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("showoff-img1").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/in.jpg";
+		document.getElementById("showoff-img2").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/hdrcnn.jpg";
+	    document.getElementById("showoff-img3").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/drtmo.jpg";
+	    document.getElementById("showoff-img4").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/expand.jpg";
+	    document.getElementById("showoff-img5").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg";
+	    document.getElementById("showoff-img6").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/gt.jpg";
+	    document.getElementById("showoff-img7").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/aeo.jpg";
+	    document.getElementById("showoff-img8").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/hpeo.jpg";
+	    document.getElementById("showoff-img9").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/koeo.jpg";
+	    document.getElementById("showoff-img10").src = "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/meo.jpg";
+	    if (dataset == "Synthetic") {
+            document.getElementById("ours_text").innerHTML = "Ours*";
+            document.getElementById("hdrcnn_text").innerHTML = "HDRCNN* [Eilertsen et al. 2017]";
+            document.getElementById("drtmo_text").innerHTML = "DrTMO* [Endo et al. 2017";
+        }
+		else{
+		    document.getElementById("ours_text").innerHTML = "Ours+";
+            document.getElementById("hdrcnn_text").innerHTML = "HDRCNN+ [Eilertsen et al. 2017]";
+            document.getElementById("drtmo_text").innerHTML = "DrTMO+ [Endo et al. 2017";
+		}	
+	}
+
+	function NextFrame(){
+		var frame_total = parseInt(document.getElementById("dataset-select").value.split(" ")[1]);
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		if(frame_idx < frame_total){
+			document.getElementById("frame-idx-input").value = frame_idx + 1;
+			ChangeFrame();
+		}
+	}
+
+	function PrevFrame(){
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		if(frame_idx > 1){
+			document.getElementById("frame-idx-input").value = frame_idx - 1;
+			ChangeFrame();
+		}
+	}
+
+	function ChangeCurrentView(idx){
+		var li_list = document.getElementById("current-view-ul").children;
+		console.log(idx);
+		console.log(li_list);
+		for(i = 0; i < li_list.length; i++){
+			li_list[i].className = "";
+		}
+		li_list[idx].className = "active";
+		currentView = currentViewList[idx];
+		ChangeFrame();
+	}
+	
+	function onHover1()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("input_text").innerHTML = "Ours"+training;
+	    $("#showoff-img1").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover1()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("input_text").innerHTML = "Input LDR";
+	    $("#showoff-img1").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/in.jpg");
+	}
+	
+	function onHover2()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("hdrcnn_text").innerHTML = "Ours"+training;
+	    $("#showoff-img2").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover2()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("hdrcnn_text").innerHTML = "HDRCNN"+training+" [Eilertsen et al. 2017]";
+	    $("#showoff-img2").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/hdrcnn.jpg");
+	}
+	
+	function onHover3()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("drtmo_text").innerHTML = "Ours"+training;
+	    $("#showoff-img3").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover3()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("drtmo_text").innerHTML = "DrTMO"+training+" [Endo et al. 2017]";
+	    $("#showoff-img3").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/drtmo.jpg");
+	}
+	
+	function onHover4()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("expand_text").innerHTML = "Ours"+training;
+	    $("#showoff-img4").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover4()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("expand_text").innerHTML = "ExpandNet [Marnerides et al. 2018]";
+	    $("#showoff-img4").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/expand.jpg");
+	}
+	
+	function onHover6()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("gt_text").innerHTML = "Ours"+training;
+	    $("#showoff-img6").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover6()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+        if (currentView == "ref/ldr") {
+            extend = '.jpg'
+        }
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("gt_text").innerHTML = "Ground truth HDR";
+	    $("#showoff-img6").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/gt.jpg");
+	}
+	
+	function onHover7()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("aeo_text").innerHTML = "Ours"+training;
+	    $("#showoff-img7").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover7()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("aeo_text").innerHTML = "[Aky<span>&#252;</span>z et al. 2007]";
+	    $("#showoff-img7").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/aeo.jpg");
+	}
+	
+	function onHover8()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("hpeo_text").innerHTML = "Ours"+training;
+	    $("#showoff-img8").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover8()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("hpeo_text").innerHTML = "[Huo et al. 2014]";
+	    $("#showoff-img8").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/hpeo.jpg");
+	}
+	
+	function onHover9()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("koeo_text").innerHTML = "Ours"+training;
+	    $("#showoff-img9").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover9()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("koeo_text").innerHTML = "[Kovaleski and Oliveira 2014]";
+	    $("#showoff-img9").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/koeo.jpg");
+	}
+	
+	function onHover10()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var training = '+'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+			training = '*'
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("meo_text").innerHTML = "Ours"+training;
+	    $("#showoff-img10").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/ours.jpg");
+	}
+	function offHover10()
+	{
+	    var dataset = document.getElementById("dataset-select").value.split(" ")[0];
+		var frame_idx = parseInt(document.getElementById("frame-idx-input").value);
+		document.getElementById("frame-idx").innerHTML = ("00" + frame_idx).slice(-2);
+        var extend = '.jpg'
+		var dataset_id = 0
+		if (dataset == "Synthetic") {
+            dataset_id = 0
+        }
+		if (dataset == "Real") {
+            dataset_id = 1
+        }
+		if (dataset == "RAW") {
+            dataset_id = 2
+			extend = '.jpg'
+        }
+		if (dataset == "HDREye") {
+            dataset_id = 3
+			extend = '.jpg'
+        }
+		if (dataset == "SOTA") {
+            dataset_id = 4
+        }
+		document.getElementById("meo_text").innerHTML = "[Masia et al. 2017]";
+	    $("#showoff-img10").attr('src', "VisualResults_CVPR2020/"+dataset+"/"+("000000"+(IList[dataset_id][frame_idx-1]).toString(10)).slice(-5) + "/meo.jpg");
+	}
+
+	</script>
+
+
+</body>
+</html>

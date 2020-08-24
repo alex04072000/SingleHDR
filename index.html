@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="author" content="yulunliu">
+  <title>Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="website/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="website/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="website/css/font-awesome.min.css" rel="stylesheet">
+
+  <!--<meta property="og:image" content="http://gph.is/2oZQz8h" />-->
+</head>
+<body>
+  
+  <div class="navbar-fixed">
+
+    <nav class="grey darken-4" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"></a>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+          <li><a class="nav-item waves-effect waves-light" href="#home">Home</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#abstract">Abstract</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#paper">Paper</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#download">Download</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#results">Results</a></li>
+          <li><a class="nav-item waves-effect waves-light" href="#reference">References</a></li>
+        </ul>
+
+        
+      </div>
+    </nav>
+
+  </div>
+
+
+
+
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container scrollspy" id="home">
+
+      <h4 class="header center black-text">Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline</h4>
+
+      <br>
+
+      <div class="row center">
+        <h5 class="header col l3 m4 s12">
+          <div class="author"><a href="http://www.cmlab.csie.ntu.edu.tw/~yulunliu/" target="blank">Yu-Lun Liu<sup>1,5*</sup></a></div>
+        </h5>
+
+        <h5 class="header col l3 m4 s12">
+          <div class="author"><a href="https://www.wslai.net/" target="blank">Wei-Sheng Lai<sup>2*</sup></a></div>
+        </h5>
+
+        <h5 class="header col l3 m4 s12">
+          <div class="author"><a href="https://www.cmlab.csie.ntu.edu.tw/~nothinglo/" target="blank">Yu-Sheng Chen<sup>1</sup></a></div>
+        </h5>
+
+        <h5 class="header col l3 m4 s12">
+          <div class="author">Yi-Lung Kao<sup>1</sup></div>
+        </h5>
+      </div>
+
+      <div class="row center">
+        <h5 class="header col l4 m4 s12">
+          <div class="author"><a href="https://faculty.ucmerced.edu/mhyang/" target="blank">Ming-Hsuan Yang<sup>2,4</sup></a></div>
+        </h5>
+
+        <h5 class="header col l4 m4 s12">
+          <div class="author"><a href="https://www.csie.ntu.edu.tw/~cyy/" target="blank">Yung-Yu Chuang<sup>1</sup></a></div>
+        </h5>
+
+        <h5 class="header col l4 m4 s12">
+          <div class="author"><a href="https://filebox.ece.vt.edu/~jbhuang/" target="blank">Jia-Bin Huang<sup>2</sup></a></div>
+        </h5>
+        
+      </div>
+
+      <div class="row center affiliation-row">
+        <h5 class="header col offset-l1 l2 m4 s12">
+          <div class="affiliation"><a href="https://www.ntu.edu.tw/" target="blank"><sup>1</sup>National Taiwan University</a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="affiliation"><a href="https://ai.google/research" target="blank"><sup>2</sup>Google</a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="affiliation"><a href="https://vt.edu/" target="blank"><sup>3</sup>Virginia Tech</a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="affiliation"><a href="https://www.ucmerced.edu/" target="blank"><sup>4</sup>University of California at Merced</a></div>
+        </h5>
+
+        <h5 class="header col l2 m4 s12">
+          <div class="affiliation"><a href="https://www.mediatek.tw/" target="blank"><sup>5</sup>MediaTek Inc.</a></div>
+        </h5>
+        
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row center">
+        <div class="col l12 m12 s12">
+          <img class="responsive-img" src="website/teaser.png">
+        </div>
+        
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="row section scrollspy" id="abstract">
+      <div class="title">Abstract</div>
+Recovering a high dynamic range (HDR) image from a single low dynamic range (LDR) input image is challenging due to missing details in under-/over-exposed regions caused by quantization and saturation of camera sensors.
+In contrast to existing learning-based methods, our core idea is to incorporate the domain knowledge of the LDR image formation pipeline into our model. 
+We model the HDRto-LDR image formation pipeline as the (1) dynamic range clipping, (2) non-linear mapping from a camera response function, and (3) quantization. 
+We then propose to learn three specialized CNNs to reverse these steps. 
+By decomposing the problem into specific sub-tasks, we impose effective physical constraints to facilitate the training of individual sub-networks. 
+Finally, we jointly fine-tune the entire model end-to-end to reduce error accumulation. 
+With extensive quantitative and qualitative experiments on diverse image datasets, we demonstrate that the proposed method performs favorably against state-of-the-art single-image HDR reconstruction algorithms.
+    </div>
+
+    
+    <div class="row section scrollspy" id="paper">
+      <div class="title">Papers</div>
+      <br>
+
+      <div class="row">
+      
+        <div class="col m6 s12 center">
+          <a href="https://arxiv.org/abs/2004.01179" target="_blank">
+            <img src="website/images/icon_pdf.png">
+          </a>
+          <br>
+          <a href="https://arxiv.org/abs/2004.01179" target="_blank">CVPR 2020 (arXiv)</a>
+        </div>
+
+        <div class="col m6 s12 center">
+          <a href="https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Liu_Single-Image_HDR_Reconstruction_CVPR_2020_supplemental.pdf" target="_blank">
+            <img src="website/images/icon_pdf.png">
+          </a>
+          <br>
+          <a href="https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Liu_Single-Image_HDR_Reconstruction_CVPR_2020_supplemental.pdf" target="_blank">Supplementary Material</a>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="subtitle">Citation</div>
+      <p>Yu-Lun Liu, Wei-Sheng Lai, Yu-Sheng Chen, Yi-Lung Kao, Ming-Hsuan Yang, Yung-Yu Chuang, and Jia-Bin Huang, "Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline", in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2020</p>
+
+      <br>
+
+      <div class="subtitle">Bibtex</div>
+      <pre>
+@inproceedings{liu2020single,
+    author    = {Liu, Yu-Lun and Lai, Wei-Sheng and Chen, Yu-Sheng and Kao, Yi-Lung and Yang, Ming-Hsuan and Chuang, Yung-Yu and Huang, Jia-Bin}, 
+    title     = {Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline}, 
+    booktitle = {IEEE Conference on Computer Vision and Pattern Recognition},
+    year      = {2020}
+}
+</pre>
+    </div>
+
+
+
+    <div class="section row scrollspy" id="download">
+      <div class="title">Download</div>
+      <div class="row">
+
+        <div class="col m4 s12 center">
+          <a href="https://github.com/alex04072000/SingleHDR" target="_blank">
+            <img src="website/images/github.png">
+          </a>
+          <br>
+          <a href="https://github.com/alex04072000/SingleHDR" target="_blank">Code</a>
+        </div>
+
+        <div class="col m4 s12 center">
+          <a href="https://drive.google.com/file/d/1muy49Pd0c7ZkxyxoxV7vIRvPv6kJdPR2/view?usp=sharing" target="_blank">
+            <img src="website/images/icon_zip.png">
+          </a>
+          <br>
+          <a href="https://drive.google.com/file/d/1muy49Pd0c7ZkxyxoxV7vIRvPv6kJdPR2/view?usp=sharing" target="_blank">Training data (14 GB)</a>
+        </div>
+
+        <div class="col m4 s12 center">
+          <a href="https://drive.google.com/file/d/1m4CVsxAy4sXD1IlhPi1Tfi9pqiuhly3L/view?usp=sharing" target="_blank">
+            <img src="website/images/icon_zip.png">
+          </a>
+          <br>
+          <a href="https://drive.google.com/file/d/1m4CVsxAy4sXD1IlhPi1Tfi9pqiuhly3L/view?usp=sharing" target="_blank">Testing data (HDR-Synth) (87 GB)</a>
+        </div>
+
+      </div>
+	  
+	  <div class="row">
+
+        <div class="col m4 s12 center">
+          <a href="https://drive.google.com/file/d/1aHm55zFrPoRu2KwhSnzqbsUNsapStrlC/view?usp=sharing" target="_blank">
+            <img src="website/images/icon_zip.png">
+          </a>
+          <br>
+          <a href="https://drive.google.com/file/d/1aHm55zFrPoRu2KwhSnzqbsUNsapStrlC/view?usp=sharing" target="_blank">Testing data (HDR-Real) (17 GB)</a>
+        </div>
+
+        <div class="col m4 s12 center">
+          <a href="https://drive.google.com/file/d/1rl3BSQ0Oyx-qCfpVCH4kVxaidrR01EZ7/view?usp=sharing" target="_blank">
+            <img src="website/images/icon_zip.png">
+          </a>
+          <br>
+          <a href="https://drive.google.com/file/d/1rl3BSQ0Oyx-qCfpVCH4kVxaidrR01EZ7/view?usp=sharing" target="_blank">Testing data (RAISE) (179 GB)</a>
+        </div>
+
+        <div class="col m4 s12 center">
+          <a href="https://drive.google.com/file/d/1l-Ix-7qQQqRjAOU6ow9UK-glooaWJ5_Y/view?usp=sharing" target="_blank">
+            <img src="website/images/icon_zip.png">
+          </a>
+          <br>
+          <a href="https://drive.google.com/file/d/1l-Ix-7qQQqRjAOU6ow9UK-glooaWJ5_Y/view?usp=sharing" target="_blank">Testing data (HDR-Eye) (0.52 GB)</a>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="section row scrollspy" id="results">
+      <div class="title">Results</div>
+      
+      <div class="row center">
+        <div class="subtitle"><a href="website/HDR_HTML_CameraReady/result.html">Results on the HDR-Synth, HDR-Real, RAISE, HDR-Eye dataset, and examples from prior work and DxOMark</a></div>
+        <a class="summary" href="website/HDR_HTML_CameraReady/result.html"><div class="col s12 summary-transfer"></div></a>
+      </div>
+
+      <br>
+
+
+    </div>
+
+
+    <div class="row section scrollspy" id="reference">
+      <div class="title">References</div>
+      <ul>
+        <li>&bull; 
+          <a href="https://github.com/gabrieleilertsen/hdrcnn" target="blank">HDR image reconstruction from a single exposure using deep CNNs</a>, SIGGRAPH Asia, 2017.
+        </li>
+        <li>&bull; 
+          <a href="http://www.cgg.cs.tsukuba.ac.jp/~endo/projects/DrTMO/" target="blank">Deep reverse tone mapping</a>, SIGGRAPH Asia, 2017.
+        </li>
+        <li>&bull; 
+          <a href="https://github.com/dmarnerides/hdr-expandnet" target="blank">ExpandNet: A deep convolutional neural network for high dynamic range expansion from low dynamic range content</a>, Eurographics, 2018.
+        </li>
+		
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="page-footer grey lighten-3">
+      <!--
+      <div class="row">
+        <div class="col l4 offset-l4 s12">
+          <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=330&t=tt&d=fhGpuMgoLYXytRWhcIV-396rCSmJYtpAJdk3tTNbAnY"></script>
+        </div>
+      </div>
+    -->
+    
+    <div class="footer-copyright center black-text">
+      Copyright © Jason Lai 2017
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>

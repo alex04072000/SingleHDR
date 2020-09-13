@@ -1,5 +1,8 @@
+## Important update (2020/09/13)
+Training code uploaded. Please refer to `training_code` folder and follow the instructions in the readme file.
+
 ## Important update (2020/07/10)
-The webpage and the links to the dataset will not be accessible from 7/7 to 7/25. The temporary links to the peoject website and dataset are below:
+The webpage and the links to the dataset will not be accessible. The temporary links to the peoject website and dataset are below:
 
 [Project website](https://alex04072000.github.io/SingleHDR/)
 

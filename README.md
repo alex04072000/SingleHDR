@@ -50,7 +50,7 @@ Further information please contact [Yu-Lun Liu](http://www.cmlab.csie.ntu.edu.tw
 
 * To download the pre-trained models:
 
-    * [ckpt](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/SingleHDR_/ckpt.zip)
+    * [ckpt](https://drive.google.com/file/d/1e9vP8YPEjGcvXCa0Bfqwxw7qks7dH-VE/view?usp=sharing)
 
 ## Usage
 * Run your own images (using the model trained on our synthetic training data):

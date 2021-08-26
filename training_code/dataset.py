@@ -168,7 +168,6 @@ def _load_pkl(name):
 
 i_dataset_train_posfix_list = _load_pkl('i_dataset_train')
 i_dataset_test_posfix_list = _load_pkl('i_dataset_test')
-a_dataset_test_posfix_list = _load_pkl('a_dataset_test')
 
 class HDRDataset(Dataset):
 
@@ -314,14 +313,6 @@ def get_vali_dataset(hdr_prefix):
 def get_i_test_dataset(hdr_prefix):
     return MergeDataset([
         PatchHDRDataset(hdr_prefix, i_dataset_test_posfix_list, False),
-        CatDataset([test_crf_list, test_invcrf_list]),
-        test_t_list,
-    ])
-
-
-def get_a_test_dataset(hdr_prefix):
-    return MergeDataset([
-        PatchHDRDataset(hdr_prefix, a_dataset_test_posfix_list, False),
         CatDataset([test_crf_list, test_invcrf_list]),
         test_t_list,
     ])

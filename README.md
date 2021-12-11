@@ -6,15 +6,15 @@ The webpage and the links to the dataset will not be accessible. The temporary l
 
 [Project website](https://alex04072000.github.io/SingleHDR/)
 
-[Training data ](https://drive.google.com/file/d/1muy49Pd0c7ZkxyxoxV7vIRvPv6kJdPR2/view?usp=sharing)
+[Training data ](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/hdr/SingleHDR_training_data.zip)
 
-[Testing data (HDR-Synth)](https://drive.google.com/file/d/1m4CVsxAy4sXD1IlhPi1Tfi9pqiuhly3L/view?usp=sharing)
+[Testing data (HDR-Synth)](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/hdr/SingleHDR_results/HDR-Synth.zip)
 
-[Testing data (HDR-Real)](https://drive.google.com/file/d/1aHm55zFrPoRu2KwhSnzqbsUNsapStrlC/view?usp=sharing)
+[Testing data (HDR-Real)](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/hdr/SingleHDR_results/HDR-Real.zip)
 
-[Testing data (RAISE)](https://drive.google.com/file/d/1rl3BSQ0Oyx-qCfpVCH4kVxaidrR01EZ7/view?usp=sharing)
+[Testing data (RAISE)](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/hdr/SingleHDR_results/RAISE.zip)
 
-[Testing data (HDR-Eye)](https://drive.google.com/file/d/1l-Ix-7qQQqRjAOU6ow9UK-glooaWJ5_Y/view?usp=sharing)
+[Testing data (HDR-Eye)](https://www.cmlab.csie.ntu.edu.tw/~yulunliu/hdr/SingleHDR_results/HDR-Eye.zip)
 
 [Pre-trained weights](https://drive.google.com/file/d/1e9vP8YPEjGcvXCa0Bfqwxw7qks7dH-VE/view?usp=sharing)
 
